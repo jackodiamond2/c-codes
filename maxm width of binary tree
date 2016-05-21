@@ -1,0 +1,73 @@
+// C++ program to find maximum width of binary tree
+#include<stdio.h>
+#include<stdlib.h>
+
+int height,width,tempWidth;
+//node of tree using struct
+struct node {
+  int data;
+  struct node* left;
+  struct node* right;
+};
+
+struct node *root, *head , *temp;
+
+struct node* newNode(int a){
+    root = (struct node*)malloc(sizeof(struct node));
+    root ->data = a;
+    root ->left = NULL;
+    root ->right = NULL;
+}
+
+int max(int a, int b){
+    if(a>b)
+        return a;
+    else
+        return b;
+}
+
+int findHeight(struct node* temp){
+    if(temp==NULL)
+        return 0;
+        
+    return max(findHeight(temp->left)+1,findHeight(temp->right)+1);
+}
+
+void findWidth(struct node* temp,int level){
+
+    if(temp==NULL)
+        return ;
+        
+    if(level==1){
+     //   printf("%d",temp->data);
+        tempWidth++;
+    }
+        
+    findWidth(temp->left,level-1);
+    findWidth(temp->right,level-1);
+    
+}
+
+
+int main(){
+    head = newNode(1);
+    head->left = newNode(2);
+    head->right = newNode(3);
+    head ->left->left = newNode(4);
+    head ->left->right = newNode(5);
+    head ->right->right = newNode(8);
+    head->right->right->left = newNode(6);
+    head->right->right->right = newNode(7);
+    temp = head;
+    height = findHeight(temp);
+    width =0;
+ 
+    for(int i =1;i<=height;i++){
+       tempWidth=0;
+       temp = head;
+       findWidth(temp,i);
+       width = max(tempWidth,width);
+    }
+    printf("%d",width);
+    return 0;
+}
