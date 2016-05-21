@@ -1,0 +1,61 @@
+// C++ program to find height and width of a binary tree!
+#include<stdio.h>
+#include<stdlib.h>
+
+//node of tree using struct
+struct node {
+  int data;
+  struct node* left;
+  struct node* right;
+};
+
+struct node *root, *head , *temp;
+int height,diameter;
+struct node* newNode(int a){
+    root = (struct node*)malloc(sizeof(struct node));
+    root ->data = a;
+    root ->left = NULL;
+    root ->right = NULL;
+}
+//maximum of 2
+int max(int a, int b){
+    if(a>b)
+    return a;
+    else
+    return b;
+}
+//height of the tree
+int findHeight(struct node* temp){
+    if(temp==NULL)
+        return 0;
+    else
+        return max((findHeight(temp->left)+1),(findHeight(temp->right)+1));
+}
+//maximum od 3
+int maximum(int a , int b , int c){
+    return max(max(a,b),c);
+}
+
+int FindDia(struct node* temp){
+    if(temp==NULL)
+       return 0;
+    
+  return maximum(FindDia(temp->left),FindDia(temp->right), findHeight(temp->left)+findHeight(temp->right)+1);
+}
+
+int main(){
+    
+    head = newNode(1);
+    head->left = newNode(2);
+    head->right = newNode(3);
+    head->left->left = newNode(4);
+    head->left->right = newNode(5);
+    head->left->left->left = newNode(6);
+    head->right->right = newNode(7);
+    temp = head;
+    height = max((findHeight(temp->left)+1),(findHeight(temp->right)+1));
+    diameter = FindDia(temp);
+   
+   printf("%d",diameter);
+
+}
