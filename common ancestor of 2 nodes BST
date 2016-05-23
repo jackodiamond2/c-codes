@@ -1,0 +1,87 @@
+//common ancestors of two nodes
+#include <iostream>
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node {
+  int data;
+  struct node *left, *right;
+};
+
+struct node *head, *root, *temp;
+
+struct node* newNode(int a){
+    root = (struct node*)malloc(sizeof(struct node));
+    root->data= a;
+    root->left = NULL;
+    root->right = NULL;
+    return root;
+}
+
+struct node* insertNode(struct node* head ,int key){
+   // root = (struct node*)malloc(sizeof(struct node));
+    
+    if(head==NULL)
+      return newNode(key);
+    
+    if(key < head->data)
+     head->left=insertNode(head->left ,key);
+    if(key>head->data)
+        head->right=insertNode(head->right , key);
+    
+    return head;
+}
+
+void inorder (struct node* head){
+    
+    if(head!=NULL){
+    inorder(head->left);
+    printf("%d",head->data);
+    inorder(head->right);
+    }
+}
+
+void findCmnAnces(int key1,int key2,struct node* head){
+    
+    if(head==NULL)
+        return;
+    
+    if(key1<head->data&&key2>head->data){
+        printf("%d",head->data);
+        return ;
+    }
+    if(key1>head->data)
+        findCmnAnces(key1,key2,head->right);
+    
+    if(key2<head->data)
+        findCmnAnces(key1,key2,head->left);
+}
+
+
+
+void commonAncestor(int key1, int key2,struct node* head){
+    int tempa;
+    if(key1>key2){
+        tempa= key1;
+        key1 = key2;
+        key2 = tempa;
+    }
+    findCmnAnces(key1,key2,head);
+}
+
+int main() {
+	// your code goes here
+    temp = (struct node*)malloc(sizeof(struct node));
+    temp = newNode(5);
+ //   printf("%d",temp->data);
+    temp= insertNode(temp,4);
+    temp= insertNode(temp,1);
+    temp = insertNode(temp,9);
+    temp = insertNode(temp,2);
+    temp= insertNode(temp,6);
+    temp = insertNode(temp,10);
+    inorder(temp);
+    printf("\n");
+    commonAncestor(10,6,temp);
+	return 0;
+}
