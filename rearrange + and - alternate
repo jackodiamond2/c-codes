@@ -1,0 +1,46 @@
+//rearrange +ve and -ve numbers in alternate manner
+#include <iostream>
+#include<stdio.h>
+#include<stdlib.h>
+using namespace std;
+
+int arr[] = {2,4,-5,3,9,-6,-4,5,2,-1,-8,-7,-5,-4,-3};
+int index,temp,size;
+
+void swapp (int index,int i) {
+    temp = arr[index];
+    arr[index]=arr[i];
+    arr[i] = temp;
+}
+
+void rearrange(){
+    while(index<size){
+    if(index%2==0){
+        for(int i=index;i<size;i++){
+            if(arr[i]<0){
+                swapp(index,i);
+            }
+        }
+    }else{
+        for(int i=index;i<size;i++){
+            if(arr[i]>0){
+                swapp(index,i);
+            }
+        }
+    }
+    index++;
+    }
+}
+
+int main() {
+	// your code goes here
+    index=0;
+    temp=0;
+    size = sizeof(arr)/sizeof(arr[0]);
+    rearrange();
+    for(int i =0; i<size ;i++){
+        printf("%d",arr[i]);
+        printf(" ");
+    }
+	return 0;
+}
