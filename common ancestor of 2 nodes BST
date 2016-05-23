@@ -1,3 +1,4 @@
+//edit: this won't work when key1 is child of key2, for that case check whether one is child of other and return the parent as answer
 //common ancestors of two nodes
 #include <iostream>
 #include<stdio.h>
