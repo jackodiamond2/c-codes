@@ -1,2 +1,7 @@
 //unfinished problems
 http://www.geeksforgeeks.org/dynamic-programming-set-3-longest-increasing-subsequence/
+
+3) Given a deck of n cards, in each iteration the top card is removed and pushed to the 
+end and the second card is removed from the deck. For eg: In 1st iteration, 1st card will
+added to the end and 2nd card will be removed, again 3rd card will be added to the end and 
+4th card will be removed and so on. Find the last card which will be remained.
