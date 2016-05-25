@@ -1,0 +1,59 @@
+//heap sort 
+#include <iostream>
+#include<stdio.h>
+#include<stdlib.h>
+using namespace std;
+
+int arr[] = {3,4,2,1,5,6,7,10,12};
+
+void swap(int i , int l){
+    int temp = arr[i];
+    arr[i]=arr[l];
+    arr[l]=temp;
+} 
+
+void heapify(int n, int i){
+    int largest =i;
+    int a = 2*i+1;
+    int b = 2*i+2;
+    
+    if(a<n&&arr[a]>arr[largest]){
+        largest = a;
+    }
+    
+    if(b<n&&arr[b]>arr[largest]){
+        largest = b;
+    }
+    
+    if(largest!=i){
+        swap(i,largest);
+        heapify(n,largest);
+    }
+}
+
+void heapSort(int n){
+    for (int i = n/2-1;i>=0;i--){
+        heapify(n,i);
+    }
+    
+    for(int i = n-1 ;i>=0 ;i--){
+        swap(0,i);
+        heapify(i,0);
+    }
+}
+
+void printHeap(int n){
+    for(int i=0;i<n;i++){
+        printf("%d",arr[i]);
+        printf(" ");
+    }
+}
+
+int main() {
+	// your code goes here
+	
+	int size = sizeof(arr)/sizeof(arr[0]);
+	heapSort(size);
+	printHeap(size);
+	return 0;
+}
