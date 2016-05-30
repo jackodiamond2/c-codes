@@ -1,0 +1,40 @@
+//Maximum profit by shares
+#include<stdio.h>
+#include<stdlib.h>
+#include <iostream>
+using namespace std;
+
+int arr[] = {10, 22, 5, 75, 65, 80};
+
+void totalProfit(){
+    int size = sizeof(arr)/sizeof(arr[0]);
+    int min,max,sum;
+    min = 0;
+    max = 0;
+    sum = 0;
+    
+    if(arr[0]<arr[1])
+        min = arr[0];
+    
+    for (int i =1;i<size;i++){
+        if(arr[i]<arr[i-1]&&arr[i]<arr[i+1])
+            min = arr[i];
+            
+        if(arr[i]>arr[i+1]&&arr[i]>arr[i-1]){
+            max = arr[i];
+            if(min!=0){
+                sum = sum + (max-min);
+                min = 0;
+            }
+        }
+    }
+    
+    printf("sum : ");
+    printf("%d",sum);
+}
+
+int main() {
+	// your code goes here
+	totalProfit();
+	return 0;
+}
