@@ -4,7 +4,7 @@ http://www.geeksforgeeks.org/dynamic-programming-set-3-longest-increasing-subseq
 3) Given a deck of n cards, in each iteration the top card is removed and pushed to the 
 end and the second card is removed from the deck. For eg: In 1st iteration, 1st card will
 added to the end and 2nd card will be removed, again 3rd card will be added to the end and 
-4th card will be removed and so on. Find the last card which will be remained.
+4th card will be removed and so on. Find the last card which will be remained..... check ans code in parent directory
 
 4)longest common subsequence
 http://www.geeksforgeeks.org/dynamic-programming-set-3-longest-increasing-subsequence/
@@ -14,3 +14,7 @@ https://www.interviewbit.com/problems/merge-overlapping-intervals/
 
 6)largest number by strings
 https://www.interviewbit.com/problems/largest-number/
+
+7) Write a program to find a loop in a linked list.
+8) For a given number, find the nearest prime number.
+
