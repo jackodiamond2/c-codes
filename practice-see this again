@@ -1,1 +1,4 @@
 https://www.interviewbit.com/problems/implement-power-function/
+// the process by which i did there returns right power value but int can't store big no.(as the return type has to be int)
+//one way to answer this , see soln approach (there they take modulo after every step). I maybe can't implement that in my code 
+//because i did it other way (oh man)...
