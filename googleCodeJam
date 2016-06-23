@@ -1,0 +1,43 @@
+//pattern for google code jam
+
+#include<iostream>
+#include<cstdio>
+#include<string>
+using namespace std;
+int main(){
+	int repeat,temp;
+	int n;
+	  freopen("C-large-practice.in", "rt", stdin); 
+      freopen("outtyper.txt", "wt", stdout); 
+	cin>>n;
+	string arr[10] = {" ","0","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+	string s;
+	getline(cin,s);
+    for(int i=1;i<=n;i++){ 
+    
+    	
+		getline(cin,s);
+			cout<<"Case #"<<i<<": ";
+		for(int p =0;p<s.length();p++){
+			for(int j =0;j<10;j++){
+				int len2 = arr[j].length();
+				for(int k=0;k<len2;k++){
+					if(arr[j][k]==s[p]){
+						for(int l=0;l<k+1;l++){
+						    
+						    	if(repeat==j&&temp==1){
+							    cout<<" ";
+							    temp=0;
+							}
+							cout<<j;
+						
+						}
+						 repeat = j;
+						 temp=1;
+					}
+				}
+			}
+		}			
+		cout<<endl;
+	}
+}
